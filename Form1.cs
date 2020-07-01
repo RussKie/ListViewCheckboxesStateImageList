@@ -14,11 +14,20 @@ namespace SimpleWinForms
 
         private void CheckState()
         {
+            this.checkBox1.CheckedChanged -= new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox2.CheckedChanged -= new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkBox3.CheckedChanged -= new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.checkBox4.CheckedChanged -= new System.EventHandler(this.checkBox4_CheckedChanged);
+
             checkBox1.Checked = listView1.LargeImageList != null;
             checkBox2.Checked = listView1.SmallImageList != null;
-            checkBox3.Checked = listView1.StateImageList != null;
+            checkBox3.Checked = listView1.StateImageList?.Images.Count > 0;
             checkBox4.Checked = listView1.CheckBoxes;
 
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
         }
 
         private void checkBox1_CheckedChanged(object sender, System.EventArgs e)
