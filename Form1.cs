@@ -9,10 +9,10 @@ namespace SimpleWinForms
         {
             InitializeComponent();
 
-            CheckState();
+            CheckState1();
         }
 
-        private void CheckState()
+        private void CheckState1()
         {
             this.checkBox1.CheckedChanged -= new System.EventHandler(this.checkBox1_CheckedChanged);
             this.checkBox2.CheckedChanged -= new System.EventHandler(this.checkBox2_CheckedChanged);
@@ -30,28 +30,70 @@ namespace SimpleWinForms
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
         }
 
+        private void CheckState2()
+        {
+            this.checkBox5.CheckedChanged -= new System.EventHandler(this.checkBox5_CheckedChanged);
+            this.checkBox6.CheckedChanged -= new System.EventHandler(this.checkBox6_CheckedChanged);
+            this.checkBox7.CheckedChanged -= new System.EventHandler(this.checkBox7_CheckedChanged);
+            this.checkBox8.CheckedChanged -= new System.EventHandler(this.checkBox8_CheckedChanged);
+
+            checkBox5.Checked = listView2.LargeImageList != null;
+            checkBox6.Checked = listView2.SmallImageList != null;
+            checkBox7.Checked = listView2.StateImageList?.Images.Count > 0;
+            checkBox8.Checked = listView2.CheckBoxes;
+
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
+        }
+
         private void checkBox1_CheckedChanged(object sender, System.EventArgs e)
         {
             listView1.LargeImageList = checkBox1.Checked ? imageListLarge : null;
-            CheckState();
+            CheckState1();
         }
 
         private void checkBox2_CheckedChanged(object sender, System.EventArgs e)
         {
             listView1.SmallImageList = checkBox2.Checked ? imageListSmall : null;
-            CheckState();
+            CheckState1();
         }
 
         private void checkBox3_CheckedChanged(object sender, System.EventArgs e)
         {
-            listView1.StateImageList = checkBox3.Checked ? imageListState : null;
-            CheckState();
+            listView1.StateImageList = checkBox3.Checked ? imageListState1 : null;
+            CheckState1();
         }
 
         private void checkBox4_CheckedChanged(object sender, System.EventArgs e)
         {
             listView1.CheckBoxes = !listView1.CheckBoxes;
-            CheckState();
+            CheckState1();
+        }
+
+        private void checkBox5_CheckedChanged(object sender, System.EventArgs e)
+        {
+            listView1.LargeImageList = checkBox5.Checked ? imageListLarge : null;
+            CheckState2();
+        }
+
+        private void checkBox6_CheckedChanged(object sender, System.EventArgs e)
+        {
+            listView2.SmallImageList = checkBox6.Checked ? imageListSmall : null;
+            CheckState2();
+        }
+
+        private void checkBox7_CheckedChanged(object sender, System.EventArgs e)
+        {
+            listView2.StateImageList = checkBox7.Checked ? imageListState1 : null;
+            CheckState2();
+        }
+
+        private void checkBox8_CheckedChanged(object sender, System.EventArgs e)
+        {
+            listView2.CheckBoxes = !listView2.CheckBoxes;
+            CheckState2();
         }
     }
 }
